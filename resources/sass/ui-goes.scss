@@ -1,0 +1,248 @@
+@font-face {
+    font-family: "Museo Sans";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Tangerine"),
+        url("../fonts/MuseoSans-300.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'RetroSignature';
+    src: url('/fonts/RetroSignature.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/**
+ * Bases
+ *
+ * -------------------------------------------------------------------
+ */
+
+html,
+body {
+    font-family: "Epilogue", sans-serif;
+    scroll-behavior: smooth;
+}
+
+main {
+    min-height: 80vh;
+}
+
+header,
+main,
+footer {
+    flex-shrink: 0;
+}
+
+
+.banner{
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    background-image: url(/img/img8.png);
+    height: 100vh;
+}
+
+.banner-content{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/img/rectangle1.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5rem;
+    height: 215px;
+}
+
+.epilogue {
+    font-family: "Epilogue", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: rgba(55, 101, 78, 1);
+}
+
+.retro-signature{
+    font-weight: 400;
+    font-size: 75px;
+    color: rgba(55, 101, 78, 1);
+    font-family: "RetroSignature", sans-serif;
+    letter-spacing: 0px;
+    -webkit-text-stroke-width: 1px;
+}
+
+.our-history{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4rem 6rem;
+    align-items: center;
+}
+
+.epilogue-oh{
+    font-family: "Epilogue", sans-serif;
+    font-weight: 300;
+    font-size: 64px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    width: 30%;
+    line-height: 70px;
+    margin-bottom: 0;
+}
+
+.img-oh{
+    width: 10%;
+}
+
+.our-history img{
+    height: 106px;
+    width: 106px;
+}
+.epilogue-oh-p{
+    font-family: "Epilogue", sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+    text-align: justify;
+    text-justify: inter-word;
+    width: 50%;
+    line-height: 18px;
+    margin-bottom: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.galery{
+    padding: 0 2rem;
+}
+
+.galery-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.galery-item img{
+    height: 322.52px;
+    width: 322.52px;
+    object-fit: cover;
+}
+
+.epilogue-g {
+    font-family: "Epilogue", sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+}
+.epilogue-g-g {
+    font-family: "Epilogue", sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    color: rgba(55, 101, 78, 1);
+}
+
+.retro-signature-g {
+    font-weight: 400;
+    font-size: 50px;
+    font-family: "RetroSignature", sans-serif;
+    -webkit-text-stroke-width: 1px !important;
+}
+.retro-signature-g-g {
+    font-weight: 400;
+    font-size: 50px;
+    color: rgba(55, 101, 78, 1);
+    font-family: "RetroSignature", sans-serif;
+    -webkit-text-stroke-width: 1px;
+}
+
+.galery-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.count p{
+    font-family: "Epilogue", sans-serif;
+    font-weight: 300;
+    font-size: 64px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 2.5rem;
+}
+
+.counter{
+    padding-top: 1rem;
+    display: flex;
+}
+.counter-left{
+    width: 40%;
+}
+.counter-left img{
+    height: 881px;
+    width: 630px;
+}
+.counter-right{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counter-days{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 1rem;
+}
+
+.epilogue-c{
+    font-family: "Epilogue", sans-serif;
+    font-weight: 500;
+    font-size: 64px;
+    margin-bottom: 0;
+}
+sup {
+    vertical-align: super !important;
+    font-size: large !important;
+}
+
+.counter-button {
+    background-color: rgba(55, 101, 78, 1);
+    width: 401px;
+    height: 64px;
+    padding: 17px 54px;
+    font-family: "Epilogue", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: rgba(251, 219, 197, 1);
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    gap: 2rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 8px 12px 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.counter-images{
+    padding-top: 1rem;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.img-right{
+  width: 340.8px;
+  height: 547.19px;
+  object-fit: cover;
+  margin-top: 2rem;
+}
+
+.img-left{
+    width: 340.8px;
+    height: 547.19px;
+    object-fit: cover;
+    margin-top: 4rem;
+}
