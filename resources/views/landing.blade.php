@@ -108,10 +108,8 @@
                     <p class="epilogue-c" id="months">6 <sup>MESES</sup></p>
                     <p class="epilogue-c" id="days">12 <sup>DÍAS</sup></p>
                     <p class="epilogue-c" id="hours">16 <sup>HORAS</sup></p>
-                    {{-- <p class="epilogue-c" id="minutes">0 <sup>MINUTOS</sup></p>
-                    <p class="epilogue-c" id="seconds">0 <sup>SEGUNDOS</sup></p> --}}
                 </div>
-                <div class="counter-button">Guardar fecha <img src="img/calendar.png" alt="calendar"></div>
+                <a class="counter-button" onclick="createCalendarEvent()">Guardar fecha <img src="img/calendar.png" alt="calendar"></a>
                 <div class="counter-images">
                     <img src="img/img2.png" class="img-left" alt="">
                     <img src="img/img1.png" class="img-right" alt="">
@@ -119,6 +117,13 @@
             </div>
         </div>
         {{-- counter --}}
+
+        {{-- counter mobile --}}
+         <div class="counter-images-mobile">
+            <img src="img/img2.png" class="img-mobile-left" alt="">
+            <img src="img/img1.png" class="img-mobile-right" alt="">
+        </div>
+        {{-- counter mobile --}}
 
         {{-- location --}}
 
@@ -148,7 +153,7 @@
             </div>
             <div class="location-right">
                 
-                <div class="map-button" id="mapButton">Ver ubicación <img src="img/mapwhite.png" alt="calendar"></div>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=13.890572020668998,-89.53202758895559" target="_blank" class="map-button" id="mapButton">Ver ubicación <img src="img/mapwhite.png" alt="calendar"></a>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1936.5707290782816!2d-89.5320410138011!3d13.890488657564635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f62ddd768c832ad%3A0xc791d686a678f0f9!2sQuinta%20palo%20alto!5e0!3m2!1ses!2ssv!4v1731041167227!5m2!1ses!2ssv" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
@@ -199,7 +204,8 @@
     @yield('scripts')
 </body>
 <script>
-    function countdown(endDate) {
+// countdown
+function countdown(endDate) {
     const end = new Date(endDate).getTime();
 
     setInterval(function() {
@@ -209,38 +215,42 @@
         const months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30));
         const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        // const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        // const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         document.getElementById('months').innerHTML = `${months} <sup>MESES</sup>`;
         document.getElementById('days').innerHTML = `${days} <sup>DÍAS</sup>`;
         document.getElementById('hours').innerHTML = `${hours} <sup>HORAS</sup>`;
-        // document.getElementById('minutes').innerHTML = `${minutes} <sup>MINUTOS</sup>`;
-        // document.getElementById('seconds').innerHTML = `${seconds} <sup>SEGUNDOS</sup>`;
 
         if (distance < 0) {
             clearInterval(x);
             document.getElementById('months').innerHTML = "0 <sup>MESES</sup>";
             document.getElementById('days').innerHTML = "0 <sup>DÍAS</sup>";
             document.getElementById('hours').innerHTML = "0 <sup>HORAS</sup>";
-            // document.getElementById('minutes').innerHTML = "0 <sup>MINUTOS</sup>";
-            // document.getElementById('seconds').innerHTML ="0 <sup>SEGUNDOS</sup>"
         }
     }, 1000);
 }
 
-// Start the countdown with your end date
-countdown('2025-03-30T00:00:00'); // Example end date
+// set date event
+countdown('2025-03-30T00:00:00');
 
-document.getElementById('mapButton').addEventListener('click', function() {
-    console.log("click");
-    
-    const latitude = 13.890749063516784;  // Replace with your latitude 13.890749063516784, -89.53199808954312
-    const longitude = -89.53199808954312;  // Replace with your longitude
-    const url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
-    window.open(url, '_blank');
-});
-
+//save calendar event
+function createCalendarEvent() {
+  var startDate = '20250330T000000Z';
+  var endDate = '20250330T235959Z';
+  var title = 'Boda F&M';
+  
+  var isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  var isAndroid = /Android/i.test(navigator.userAgent);
+  
+  if (isiOS) {
+    // iOS
+    window.location.href = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:${window.location.href}%0AUID:${Date.now()}@example.com%0ADTSTAMP:${startDate}%0AORGANIZER;CN=You:mailto:you@example.com%0ADTSTART:${startDate}%0ADTEND:${endDate}%0ASUMMARY:${title}%0ADESCRIPTION:${title}%0AEND:VEVENT%0AEND:VCALENDAR`;
+  } else if (isAndroid) {
+    // Android
+    window.location.href = `intent://calendar.google.com/calendar/r/eventedit?text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}#Intent;scheme=http;package=com.google.android.calendar;end`;
+  } else {
+    alert('This feature is only supported on mobile devices.');
+  }
+}
 
 </script>
 
