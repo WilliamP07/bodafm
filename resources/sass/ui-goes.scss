@@ -581,6 +581,29 @@ sup {
         width: 100%;
 
     }
+
+    .galery {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .galery-content {
+        scroll-behavior: auto;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        gap: 1.5rem;
+    }
+
+    .galery-content::-webkit-scrollbar{
+        display: none;
+    }
+
+    .galery-item img {
+        scroll-snap-align: start;
+
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
