@@ -1,0 +1,74 @@
+version: "3"
+
+networks:
+  nginx:
+    external: true
+
+services:
+  nginx:
+    container_name: nginx-bodafm
+    image: nginx:alpine
+    ports:
+      - "8081:80"
+    volumes:
+      - ./:/var/www/bodafm:delegated
+      - ./dockerfiles/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    networks:
+      nginx:
+        aliases:
+          - nginx-bodafm
+
+  app:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+    container_name: php-bodafm
+    restart: always
+    expose:
+      - 9000
+    volumes:
+      - ./:/var/www/bodafm:delegated
+    networks:
+      nginx:
+        aliases:
+          - php-bodafm
+
+  composer:
+    image: cyberduck/php-fpm-laravel:8.2
+    container_name: composer
+    volumes:
+      - ./:/var/www/bodafm
+    working_dir: /var/www/bodafm
+    depends_on:
+      - app
+    entrypoint: [ "composer" ]
+    networks:
+      nginx:
+        aliases:
+          - composer-bodafm
+
+  npm:
+    image: node:18
+    container_name: npm
+    volumes:
+      - ./:/var/www/bodafm
+    working_dir: /var/www/bodafm
+    entrypoint: [ "npm" ]
+    networks:
+      nginx:
+        aliases:
+          - npm-bodafm
+
+  artisan:
+    image: cyberduck/php-fpm-laravel:8.2
+    container_name: artisan
+    volumes:
+      - ./:/var/www/bodafm:delegated
+    working_dir: /var/www/bodafm
+    entrypoint: [ "php", "/var/www/bodafm/artisan" ]
+    networks:
+      nginx:
+        aliases:
+          - artisan-bodafm
