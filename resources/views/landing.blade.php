@@ -197,6 +197,33 @@
             </div>
         </div>
         {{-- tables --}}
+
+        {{-- tables --}}
+        <div class="tables-mobile">
+            <div class="table-text-mobile">
+                <div class="input-table-mobile">
+                        <p class="input-fake">Coloca el no. de mesa acá</p>
+                </div>
+                <div class="button-table">Buscar mesa<img src="img/magnifier.png" class="" alt=""></div>
+                <div class="guests">
+                    <p class="people">
+                        Ángel Pérez <br>
+                        & Nathalia Pineda + Luisita
+                    </p>
+                    <p class="table-number">
+                        Mesa: #1 - 3 personas
+                    </p>
+    
+                    <p class="thanks">
+                        Gracias por confirmar <img src="img/heart.png" class="" alt="">
+                    </p>
+                </div>
+            </div>
+            <div class="table-content-mobile">
+                <img src="img/tables-mobile.png" width="100%" height="auto" alt="">
+            </div>
+        </div>
+        {{-- tables --}}
         
     </div>
         
